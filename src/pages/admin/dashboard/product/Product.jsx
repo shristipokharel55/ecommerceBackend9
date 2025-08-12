@@ -1,6 +1,29 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import handleGetOperation from '../../../../handleOperation/handleOperation'
 
 const Product = () => {
+
+  const [formData, setFormData] = React.useState({
+    productName:"",
+    brand: "",
+    imageUrl: "",
+    isActive: "",
+    price: 0
+  })
+
+  useEffect(() => {
+    try {
+      const result = handleGetOperation(apiLinks.getAllProduct)
+      if(result.status == 200){
+        setFormData(result.data)
+      }
+    } catch (error) {
+      alert("Failed to fetch products")
+    }
+
+    fetchProduct()
+  }, [])
+
   return (
     <div>
 
