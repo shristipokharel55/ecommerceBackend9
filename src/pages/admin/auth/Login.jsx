@@ -1,11 +1,28 @@
 import React, { useState } from 'react'
+import { handlePostOperation } from '../../../handleOperation/handleOperation'
+import { apiLinks } from '../../../handleOperation/apiLinks'
+import { useNavigate } from 'react-router-dom'
 
 const Login = () => {
-    const [email,setEmail] = useState('hh')
-    const [password,setPassword] = useState('fafa')
+    const [email,setEmail] = useState('')
+    const [password,setPassword] = useState('')
 
+    const navigate = useNavigate()
     const handleSubmit = async ()=>{
-        console.log(email,password);
+       
+        try {
+              const result =   await handlePostOperation(apiLinks.userLogin,{email,password})
+       
+
+        if(!result.data){throw new Error("new error")}
+        localStorage.setItem('user',JSON.stringify(result.data))
+        if(result.data.role == 'ADMIN')
+            navigate('/admin')
+        } catch (error) {
+        
+         alert(error)
+        }
+   
     }
 
   return (
@@ -14,7 +31,7 @@ const Login = () => {
     <section className="flex w-[30rem] flex-col space-y-10">
       <div className="text-center text-4xl font-medium">Log In</div>
       <div className="w-full transform border-b-2 bg-transparent text-lg duration-300 focus-within:border-indigo-500">
-        <input type="text" value={email} onChange={(e)=>setEmail(e.target.value)} placeholder="Email or Username" className="w-full border-none bg-transparent outline-none placeholder:italic focus:outline-none" />
+        <input type="text" value={email} onChange={(e)=>setEmail(e.target.value)} placeholder="Email" className="w-full border-none bg-transparent outline-none placeholder:italic focus:outline-none" />
       </div>
       <div className="w-full transform border-b-2 bg-transparent text-lg duration-300 focus-within:border-indigo-500">
         <input type="password" value={password} onChange={(e)=>setPassword(e.target.value)} placeholder="Password" className="w-full border-none bg-transparent outline-none placeholder:italic focus:outline-none" />

@@ -1,7 +1,11 @@
-const BASE_URL = 'http://localhost:4000/api'
-
 export const apiLinks = {
-    getAllProduct: `${BASE_URL}/product/getAllProduct`,
-    deleteProduct : (id)=>(`${BASE_URL}/product/deleteProductById/${id}`)
+
+    getAllProduct : `/product/getAllProduct`,
+    getSingleProuct : (id)=> `/product/getProductById/${id}`,
+    deleteProduct : (id)=>`/product/deleteProductById/${id}`,
+    login : '/auth/login',
+    createProduct : '/product/createProduct'
+
 
 }
+
