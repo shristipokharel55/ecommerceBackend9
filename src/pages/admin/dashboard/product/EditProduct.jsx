@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { handleGetOperation } from '../../../../handleOperation/handleOpertion'
+import { handleGetOperation } from '../../../../handleOperation/handleOperation.js'
 import { apiLinks } from '../../../../handleOperation/apiLinks'
 // import { useNavigate, useParams, useSearchParams } from 'react-router-dom'
-import { handlePostOperation } from '../../../../handleOperation/handleOperation'
+import { handlePostOperation } from '../../../../handleOperation/handleOperation.js'
 import { useNavigate, useParams } from 'react-router-dom'
 
 const EditProduct = () => {

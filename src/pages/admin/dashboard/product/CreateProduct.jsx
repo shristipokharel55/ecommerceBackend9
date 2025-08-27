@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { handlePostOperation } from '../../../../handleOperation/handleOpertion'
+import { handlePostOperation } from '../../../../handleOperation/handleOperation.js'
 import { apiLinks } from '../../../../handleOperation/apiLinks'
 import { Navigate, useNavigate } from 'react-router-dom'
 

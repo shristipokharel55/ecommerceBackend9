@@ -2,15 +2,15 @@
 import React, { useEffect, useState } from "react";
 
 
-// import { useNavigate } from "react-router-dom";
-import { handleGetOperation } from "../../../handleOperation/handleOpertion";
+import { Link } from "react-router-dom";
+import { handleGetOperation } from "../../../handleOperation/handleOperation.js";
 import { apiLinks } from "../../../handleOperation/apiLinks";
 
 const ProductUser = () => {
   const [formData, setFormData] = useState([]);
-//   const [count,setCount] = useState(1)
+  const [count] = useState(1)
 
-//   const navigate = useNavigate()
+  // const navigate = useNavigate()
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -26,20 +26,20 @@ const ProductUser = () => {
       }
     };
     fetchProduct();
-  }, []);
+  }, [count]);
 
-//   const handleDelete = async (id)=>{
-//     const isConfirmed = confirm("This is going to be deleted")
-//     if(isConfirmed){
+  // const handleDelete = async (id)=>{
+  //   const isConfirmed = confirm("This is going to be deleted")
+  //   if(isConfirmed){
      
-//       const result =  await handleDeleteOperation(apiLinks.deleteProduct(id))
-//       setCount(count+1)
-//     }else{
-//       alert("Not Deleted")
-//     }
+  //     const result =  await handleDeleteOperation(apiLinks.deleteProduct(id))
+  //     setCount(count+1)
+  //   }else{
+  //     alert("Not Deleted")
+  //   }
     
 
-//   }
+  // }
 
 
 
@@ -58,7 +58,7 @@ const ProductUser = () => {
     {formData.map((product,index) => (
             
  <div key={index} className="w-72 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl">
-      <a href="#">
+      <Link to="#">
         <img src={product.imageUrl} alt="Product" className="h-80 w-72 object-cover rounded-t-xl" />
         <div className="px-4 py-3 w-72">
           <span className="text-gray-400 mr-3 uppercase text-xs">{product.brand}</span>
@@ -69,11 +69,11 @@ const ProductUser = () => {
               <p className="text-sm text-gray-600 cursor-auto ml-2">$199</p>
             </del>
             <div className="ml-auto">
-                <a href={`/product/${product._id}`}>SeeMore </a>
+                <Link to={`/product/${product._id}`}>SeeMore </Link>
             </div>
           </div>
         </div>
-      </a>
+      </Link>
     </div>
           ))}
  

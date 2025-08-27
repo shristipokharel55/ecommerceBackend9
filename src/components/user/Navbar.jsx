@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Navbar = () => {
 
@@ -44,7 +45,7 @@ const Navbar = () => {
             {
                 links.map((link,index)=>(
                 <li key={index}>
-            <a href={link.to} className="block py-2 pl-3 pr-4 text-white bg-purple-700 rounded lg:bg-transparent lg:text-purple-700 lg:p-0 dark:text-white" aria-current="page">{link.name}</a>
+            <Link to={link.to} className="block py-2 pl-3 pr-4 text-white bg-purple-700 rounded lg:bg-transparent lg:text-purple-700 lg:p-0 dark:text-white" aria-current="page">{link.name}</Link>
           </li>
                 ))
             }
